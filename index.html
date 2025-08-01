@@ -1,86 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Avinash Nalawade | Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avinash Nalawade | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #2d3436;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #2c3e50, #4ca1af);
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            scroll-snap-align: start;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        header h1 span {
+            border-right: 2px solid #fff;
+            padding-right: 5px;
+            animation: blink 0.8s step-end infinite;
+        }
+
+        @keyframes blink {
+            70% {
+                border-color: transparent;
+            }
+        }
+
+        header p {
+            font-size: 1.7rem;
+            margin-bottom: 2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        nav a:hover {
+            background: #f1c40f;
+            color: #2c3e50;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            scroll-snap-align: start;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 2s ease, transform 2s ease;
+            text-align: center;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #about {
+            background: linear-gradient(135deg, #e0f7fa, #80deea);
+        }
+
+        #skills {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+        }
+
+        #projects {
+            background: linear-gradient(135deg, #dfe6e9, #b2bec3);
+        }
+
+        #contact {
+            background: linear-gradient(135deg, #dfe6e9, #a29bfe);
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: #2d3436;
+        }
+
+        .skills,
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .skill,
+        .project {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .skill i {
+            font-size: 1.5rem;
+            color: #4ca1af;
+        }
+
+        .skill:hover,
+        .project:hover {
+            transform: translateY(-10px);
+        }
+
+        .project a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #about p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            line-height: 1.8;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #contact p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        #contact a {
+            font-weight: bold;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        a {
+            color: #2980b9;
+        }
+
+        html,
+        body {
+            height: 100%;
+            scroll-snap-type: y mandatory;
+        }
+
+        @media(max-width: 600px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
+    <header>
+        <h1><span id="typed-name"></span></h1>
+        <p>Data Analyst | Software Developer | Machine Learning Enthusiast</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-  <header>
-    <nav>
-      <div class="logo">Avinash Nalawade</div>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            I am a dynamic and results-driven professional with expertise in data analysis, software development, and
+            machine learning. With strong proficiency in SQL and backend integration, I create user-centric
+            applications. I am passionate about solving complex problems and thrive in collaborative environments.
+        </p>
+    </section>
 
-  <section id="hero">
-    <div class="hero-content">
-      <h1>Hi, I'm Avinash Nalawade</h1>
-      <p>Data Analyst | Python | SQL | Power BI | Machine Learning</p>
-      <a href="#projects" class="btn">View My Projects</a>
-    </div>
-  </section>
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills">
+            <div class="skill"><i class="fab fa-python"></i>Python (Proficient)</div>
+            <div class="skill"><i class="fab fa-java"></i>Java (Intermediate)</div>
+            <div class="skill"><i class="fab fa-html5"></i>HTML, CSS, JavaScript</div>
+            <div class="skill"><i class="fab fa-react"></i>React.js</div>
+            <div class="skill"><i class="fas fa-database"></i>MySQL, MongoDB</div>
+            <div class="skill"><i class="fas fa-chart-bar"></i>Power BI, Excel</div>
+            <div class="skill"><i class="fas fa-code"></i>Pandas, NumPy, Matplotlib</div>
+        </div>
+    </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Data Analyst with strong skills in SQL, Power BI, and Machine Learning. Experienced in analyzing datasets, building dashboards, and using Python for predictive modeling. Passionate about data-driven decision-making.</p>
-  </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="project">
+                <h3>OTT Platform</h3>
+                <p>Developed a React-based OTT platform using TMDB API. Features responsive UI and dynamic content
+                    updates.</p>
+                <a href="https://github.com/Avinash-1103/OTT-PLATFORM-IN-REACT/tree/main/PROJECT">GitHub Link</a>
+            </div>
+            <div class="project">
+                <h3>Car Insurance Claim Prediction</h3>
+                <p>Built ML model to predict insurance claims with 80% accuracy using Python, data visualization, and
+                    analysis.</p>
+                <a href="https://github.com/Avinash-1103/Car-insurance-claim-prediction">GitHub Link</a>
+            </div>
+            <div class="project">
+                <h3>Movie Ticket Booking System</h3>
+                <p>Java + SQLite system for booking movie tickets with real-time backend integration and secure
+                    transactions.</p>
+                <a href="https://github.com/Avinash-1103/Movie-Ticket-Booking-System-">GitHub Link</a>
+            </div>
+        </div>
+    </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects-grid">
+    <section id="contact">
+        <h2>Contact</h2>
+        <div>
+            <p>Email: <a href="mailto:avinashnalawade0007@gmail.com">avinashnalawade0007@gmail.com</a></p>
+            <p>Phone: +91 7249060794</p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/avinash-nalawade-648b19278">Profile</a></p>
+            <p>GitHub: <a href="https://github.com/Avinash-1103">Avinash-1103</a></p>
+        </div>
+    </section>
 
-      <div class="project-card">
-        <h3>Flight Ticket Price Prediction</h3>
-        <p>Predicted flight prices using ML models with 85% accuracy. Used features like departure date, airline, and destination.</p>
-        <a href="https://github.com/Avinash-1103/Flight-ticket-price-prediction" target="_blank">View on GitHub</a>
-      </div>
+    <footer>
+        <p>&copy; 2025 Avinash Nalawade</p>
+    </footer>
 
-      <div class="project-card">
-        <h3>Car Insurance Claim Prediction</h3>
-        <p>Built a model to predict claim likelihood with 80% accuracy using driver age, vehicle type, and history.</p>
-        <a href="https://github.com/Avinash-1103/Car-insurance-claim-prediction" target="_blank">View on GitHub</a>
-      </div>
+    <script>
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.3 });
 
-      <div class="project-card">
-        <h3>Sales Data Analysis</h3>
-        <p>Analyzed e-commerce data in Power BI, showing 110% revenue growth. Created dashboards from 2011–2014 data.</p>
-        <a href="https://github.com/Avinash-1103/Power-BI-Dashboards/tree/main/Sales%20Data%20Analysis" target="_blank">View on GitHub</a>
-      </div>
+        sections.forEach(section => observer.observe(section));
 
-    </div>
-  </section>
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
 
-  <section id="skills">
-    <h2>Skills & Tools</h2>
-    <ul>
-      <li><strong>Languages:</strong> Python, SQL, Java, HTML, CSS, JavaScript</li>
-      <li><strong>Tools:</strong> Power BI, Excel, Tableau, GitHub</li>
-      <li><strong>Libraries:</strong> Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn</li>
-      <li><strong>Soft Skills:</strong> Problem Solving, Critical Thinking, Communication, Teamwork</li>
-    </ul>
-  </section>
+        const allSections = Array.from(document.querySelectorAll('header, section'));
+        let currentIndex = 0;
 
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:avinashnalawade0007@gmail.com">avinashnalawade0007@gmail.com</a></p>
-    <p>Phone: <a href="tel:+917249060794">+91 7249060794</a></p>
-    <p>
-      <a href="https://www.linkedin.com/in/avinash-nalawade-648b19278" target="_blank">LinkedIn</a> |
-      <a href="https://github.com/Avinash-1103" target="_blank">GitHub</a>
-    </p>
-  </section>
+        function autoScroll() {
+            currentIndex = (currentIndex + 1) % allSections.length;
+            allSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
+        }
 
-  <footer>
-    <p>© 2025 Avinash Nalawade. All rights reserved.</p>
-  </footer>
+        setInterval(autoScroll, 5000); // scroll every 10 seconds
 
+        // Typing animation for name
+        const typedName = document.getElementById('typed-name');
+        const fullText = 'Avinash Nalawade';
+        let charIndex = 0;
+
+        function typeChar() {
+            if (charIndex < fullText.length) {
+                typedName.textContent += fullText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeChar, 150);
+            }
+        }
+        typeChar();
+    </script>
 </body>
+
 </html>
