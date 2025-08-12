@@ -1,4 +1,4 @@
-// sample dynamic data (replace with API calls)
+// === DATA ===
 const courses = [
   { id: 'c1', title: 'Beginner Driving — Intensive', level:'Beginner', durationDays:28, price:4999, rating:4.8, students:1200, desc:'20 practical hours + 5 theory sessions. Personal instructor.' , tags:['city','manual'] , image:'https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=0141c2d0d4e43a5d0c2f6fda6df6b6e3'},
   { id: 'c2', title: 'Advanced Road Skills', level:'Advanced', durationDays:14, price:3499, rating:4.7, students:560, desc:'Highway driving, night sessions, defensive techniques.' , tags:['highway','automatic'], image:'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=5c8bd3a7b1c7d2b9b8a1c3b2f11c9fea'},
@@ -26,10 +26,10 @@ const reviews = [
   { name:'Vikram J.', rating:4, text:'Great value for money and flexible slots.' },
 ];
 
-// utility functions
+// Utility functions
 const $ = sel => document.querySelector(sel);
 const $$ = sel => Array.from(document.querySelectorAll(sel));
 function formatPrice(n){ return '₹' + n.toLocaleString('en-IN'); }
 
-// The rest of your original <script> JavaScript stays here unchanged
-// (Copy all your original JavaScript code exactly from your <script> tag)
+// === REST OF JS ===
+// (Insert the exact rendering, filtering, animation, and modal logic from your original script here)
