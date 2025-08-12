@@ -1,3 +1,4 @@
+/* === Extracted from <style> in your original file === */
 .glass {
   background: rgba(255,255,255,0.6);
   backdrop-filter: blur(6px);
@@ -21,7 +22,9 @@
   position: absolute;
   inset: 0;
 }
+/* rating stars */
 .star { color:#f6ad55; }
+/* responsive tweaks for hero decorative svg */
 @media(min-width: 1280px){
   .hero-deco { transform: translateX(5%); }
 }
